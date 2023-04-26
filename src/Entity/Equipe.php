@@ -25,6 +25,13 @@ class Equipe
     #[ORM\Column(length: 255)]
     private ?int $renommee = null;
 
+    // public function __construct($nom, $ville, $budget,$renommee){
+        
+    //     $this->nom = $nom;
+    //     $this->ville = $ville;
+    //     $this->budget = $budget;
+    //     $this->renommee = $renommee;
+    // }
     public function getId(): ?int
     {
         return $this->id;

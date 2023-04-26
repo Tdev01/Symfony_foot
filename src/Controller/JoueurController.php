@@ -8,6 +8,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class JoueurController extends AbstractController
 {
+    #[Route('/addjoueur', name: 'new_joueur')]
+    public function newplayer(): Response
+    {
+        return $this->render('joueur/index.html.twig', [
+            'controller_name' => 'JoueurController',
+        ]);
+    }
+
     #[Route('/joueur', name: 'app_joueur')]
     public function index(): Response
     {
@@ -15,4 +23,6 @@ class JoueurController extends AbstractController
             'controller_name' => 'JoueurController',
         ]);
     }
+
+
 }

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}home{% endblock %}
+{% block body %}
+    <style>
+        .wrapper {
+            margin: 1em auto;
+            width: 95%;
+
+        }
+
+        img{
+            width:10%;
+            height:5%;
+        }
+    </style>    
+    
+    {# -------------------------------- #}
+    <div class="wrapper">
+        <h1>Bienvenue sur Symfoot</h1>
+        <button type="button" class="btn btn-outline-primary"><a class="dropdown-item" href="{{ path('new_team')}}">Crée une nouvelle équipe </a></button>
+        <button type="button" class="btn btn-outline-primary"><a class="dropdown-item" href="/select_equipe">Selection équipe </a></button>
+        <button type="button" class="btn btn-outline-primary"><a class="dropdown-item" href="/new_saison">Nouvelle saison </a></button>
+        <button type="button" class="btn btn-outline-primary"><a class="dropdown-item" href="/history">Historique </a></button>
+
+    </div>
+{% endblock %}
