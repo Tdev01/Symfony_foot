@@ -3,6 +3,22 @@
 {% block title %}Base{% endblock %}
 
 {% block body %}
-
+<div class="wrapper">
+<table class="table table-hover">
+        <tr scope="col">
+            <th >Prenom</th>
+            <th >Nom</th>
+            <th >position</th>
+        </tr>
+        {% for joueur in joueurs %}
+        <tr scope="row">
+            <td>{{ joueur.nom }}</td>
+            <td>{{ joueur.prenom }}</td>
+            <td>{{ joueur.position }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        <a href="{{ path('app_home') }}">Retour à la page home</a>
+    </div>
 
 {% endblock %}

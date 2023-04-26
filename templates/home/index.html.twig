@@ -15,12 +15,12 @@
     </style>    
     
     {# -------------------------------- #}
-    <div class="wrapper">
+    <div class="card bg-secondary mb-3" style="max-width: 30rem;">
         <h1>Bienvenue sur Symfoot</h1>
         <button type="button" class="btn btn-outline-primary"><a class="dropdown-item" href="{{ path('new_team')}}">Crée une nouvelle équipe </a></button>
         <button type="button" class="btn btn-outline-primary"><a class="dropdown-item" href="/select_equipe">Selection équipe </a></button>
         <button type="button" class="btn btn-outline-primary"><a class="dropdown-item" href="/new_saison">Nouvelle saison </a></button>
         <button type="button" class="btn btn-outline-primary"><a class="dropdown-item" href="/history">Historique </a></button>
-
+            <button type="button" class="btn btn-primary"><a class="dropdown-item" href="{{ path('show_joueur')}}">Voir la liste des joueurs</a></button>
     </div>
 {% endblock %}
