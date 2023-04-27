@@ -73,12 +73,12 @@ class Equipe
         return $this;
     }
 
-    public function getRenommee(): ?string
+    public function getRenommee(): ?int
     {
         return $this->renommee;
     }
 
-    public function setRenommee(string $renommee): self
+    public function setRenommee(int $renommee): self
     {
         $this->renommee = $renommee;
 

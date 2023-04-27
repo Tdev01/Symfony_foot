@@ -6,40 +6,37 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Equipe;
 use App\Form\EquipeType;
+
 
 class EquipeController extends AbstractController
 {       
    #[Route("/addteam", name:"new_team")]
-   public function newTeam(Request $request)
+   public function index(Request $request, EntityManagerInterface $entityManager): Response
    {
-        $newteam = new Equipe();
-        $form = $this->createForm(EquipeType::class, $newteam);
-        $form->handleRequest($request);
+       $equipe = new Equipe();
+       $form = $this->createForm(EquipeType::class, $equipe);
+       $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($equipe);
+            $entityManager->flush();
+        }
 
-   if ($form->isSubmitted() && $form->isValid()) {
-      $em = $this->getManager();
-
-      $newteam->setCreatedAt(new DateTime());
-
-      $em->persist($newteam);
-      $em->flush();
-
-      $this->addFlash('success', 'votre équipe à  bien été crée !');
-      return $this->redirectToRoute('home');
+       return $this->render('equipe/index.html.twig', [
+           'controller_name' => 'EquipeController',
+           'form' => $form->createView(),
+       ]);
    }
 
-   return $this->render('equipe/index.html.twig', [
-      'formNewTeam' => $form->createView()
-   ]);
-}
 
     #[Route('/equipe', name: 'app_equipe')]
-    public function index(): Response
+    public function homeEquipe(): Response
     {
         return $this->render('equipe/index.html.twig', [
             'controller_name' => 'EquipeController',
         ]);
     }
+
 }
