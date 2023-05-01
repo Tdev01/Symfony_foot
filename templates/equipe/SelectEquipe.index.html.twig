@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Selection d'équipe{% endblock %}
+
+{% block body %}
+
+ <style>
+        h1{
+            margin:2%;
+            padding:1%;
+             text-align: center;
+        }
+        .table{
+            width: 70%;
+        }
+
+        #scales{
+            text-align: center;
+            margin:2%;
+            padding:2%;
+        }
+
+    </style>    
+<h1>Veuillez selectionner une équipe</h1>
+<table class="table table-hover">
+        <tr class="table-primary" >
+            <th scope="row">nom</th>
+            <th scope="col">ville</th>
+            <th scope="col">budget</th>
+            <th scope="col">renommée</th>
+            <th scope="col">Selectionnée une équipe</th>
+            
+        </tr>
+        {% for equipe in equipes %}
+        <tr scope="row">
+            <td>{{ equipe.nom }}</td>
+            <td>{{ equipe.ville }}</td>
+            <td>{{ equipe.budget }}</td>
+            <td>{{ equipe.renommee }}</td>
+            <td><input type="checkbox" id="scales" name="scales"></td>
+        </tr>
+        {% endfor %}
+        </table>
+{% endblock %}
+
+
+

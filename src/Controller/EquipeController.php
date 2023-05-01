@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\EquipeRepository;
 use App\Entity\Equipe;
 use App\Form\EquipeType;
 
@@ -30,13 +31,23 @@ class EquipeController extends AbstractController
        ]);
    }
 
-
-    #[Route('/equipe', name: 'app_equipe')]
-    public function homeEquipe(): Response
-    {
-        return $this->render('equipe/index.html.twig', [
-            'controller_name' => 'EquipeController',
+   #[Route('/equipe', name: 'app_equipe')]
+   public function homeEquipe(): Response
+   {
+       return $this->render('equipe/index.html.twig', [
+           'controller_name' => 'EquipeController',
         ]);
     }
-
+    
+    #[Route('/SelectEquipe', name: 'select_equipe')]
+     public function showEquipe(Request $request, EquipeRepository $equipeRepository): Response
+     {   
+                 // ---------------//
+         $equipe = $equipeRepository->findAll();
+          return $this->render('equipe/SelectEquipe.index.html.twig',[
+         'equipes' => $equipe,
+         ]);
+     }
 }
+
+$selectequipe = document.getelementbyid();
